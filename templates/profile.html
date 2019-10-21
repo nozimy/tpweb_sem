@@ -1,0 +1,70 @@
+{%  extends "base.html" %}
+{% load static %}
+{% block title %} Profile {% endblock %}
+
+{%  block content %}
+    <div class="col-sm-12 col-md-12 mb-3">
+      <h4>Settings: {{ user.uesrname }}</h4>
+    </div>
+    <div class="col-sm-12 col-md-10">
+        <form id="profileForm" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group row">
+                <label for="l" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-6">
+                <div class="form-text errorSignup" style="color: #dc3545;"></div>
+                </div>
+            </div>
+
+              <div class="form-group row">
+                <label for="login" class="col-sm-2 col-form-label">Login</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control  " name="username" id="username" value="{{ user.username }}" required>
+    {#                <div class="invalid-feedback">#}
+    {#                  Invalid login. Please, use latin letters and "-"#}
+    {#                </div>#}
+                </div>
+              </div>
+
+                <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control  " id="email" name="email" value="{{ user.email }}" required>
+    {#                <div class="invalid-feedback">#}
+    {#                  Invalid email#}
+    {#                </div>#}
+                </div>
+              </div>
+
+                <div class="form-group row">
+                <label for="nickname" class="col-sm-2 col-form-label">NickName</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control  " id="nickname" name="nickname" value="{{ user.profile.nickname }}" required>
+    {#                <div class="invalid-feedback">#}
+    {#                  NickName is required#}
+    {#                </div>#}
+                </div>
+              </div>
+
+                <div class="form-group row">
+                <label for="customFile" class="col-sm-2 col-form-label">Upload avatar</label>
+                <div class="col-sm-6">
+                        <img src="{% include 'inc/avatar_img.html' with avatar=user.profile.avatar %}" width="128" height="128" class="mr-3 mb-2" alt="...">
+
+                    <div class="custom-file">
+                       <input type="file" accept="image/jpeg,image/x-png" id="avatar" class="custom-file-input form-control-file" name="avatar">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                </div>
+              </div>
+
+
+                <div class="form-group row justify-content-end">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary mb-2">Save</button>
+                    </div>
+                </div>
+        </form>
+    </div>
+
+{% endblock %}

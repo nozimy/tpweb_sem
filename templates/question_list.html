@@ -1,0 +1,38 @@
+{%  extends "base.html" %}
+{% load static %}
+{%  block content %}
+
+{#    <div class="row">#}
+        <div class="col-sm-12 col-md-12 mb-3">
+          <a href="?tab=new" class="tp-nav-item {%  if not request.GET.tab or request.GET.tab == "new" %} active {% endif %}">New Questions</a>
+          <a href="?tab=hot" class="tp-nav-item {%  if request.GET.tab == "hot" %} active {% endif %}">Hot Questions</a>
+        </div>
+{#    </div>#}
+{% for question in page %}
+    {% include 'inc/question.html' %}
+{% endfor %}
+
+{% include 'inc/pagination.html' %}
+
+{%  endblock %}
+
+
+{% block js %}
+    <script>
+        (function(){
+            $(".js-vote").on("click", function(){
+                var $this = $(this);
+                var qid = $this.data('qid');
+                var vote = $this.data('vote');
+                console.log("qid" + qid);
+                $.post('/vote/', {
+                    qid: qid,
+                    vote: vote
+                }).done(function (data) {
+                    console.log(data);
+                });
+                return false;
+            });
+        })
+    </script>
+{% endblock %}

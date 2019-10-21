@@ -1,0 +1,51 @@
+{%  extends "base.html" %}
+{% load static %}
+{% block title %} Question title {% endblock %}
+
+{%  block content %}
+    <div class="media tp-question-block">
+                          <div>
+{#                              <img src="{% static 'img/pinterest_profile_image.png' %}" width="96" height="96" class="mr-3 mb-2" alt="...">#}
+                              <img src="{% include 'inc/avatar_img.html' with avatar=question.author.avatar %}" width="96" height="96" class="mr-3 mb-2" alt="...">
+                          <div class="tp-voting d-flex flex-column justify-content-center">
+                            <button><i class="fas fa-chevron-up"></i></button>
+                              <div>{{ question.rating }}</div>
+                            <button><i class="fas fa-chevron-down"></i></button>
+                          </div>
+                          </div>
+
+                          <div class="media-body">
+                            <h5 class="mt-0"><a href="#">{{ question.title }}</a></h5>
+                              <div class="q-description">
+                                  {{ question.text }}
+                              </div>
+                              <div>
+                                  <span>Tags:
+                                        {% include 'inc/tags.html' %}
+                                  </span>
+                              </div>
+
+                          </div>
+                        </div>
+
+                        {% for answer in page %}
+                            {% include 'inc/answer.html' %}
+                        {% endfor %}
+
+                        {% if page.end_index >= 5 %}
+                            {% include 'inc/pagination.html' with page=page %}
+                        {% endif %}
+
+
+                        <div class="form-text errorAnswer" style="color: #dc3545;"></div>
+                        <form id="addAnswer" method="post" action="{% url 'answer' question.pk %}" class="margin-top-30">
+                            {% csrf_token %}
+                              <div class="form-group">
+                                  <a name="answer"><label for="answer">Your Answer</label></a>
+                                <textarea class="form-control" id="answer" rows="3"></textarea>
+                              </div>
+                             <button type="submit" class="btn btn-primary mb-2">Answer</button>
+
+                        </form>
+{% endblock %}
+

@@ -1,0 +1,51 @@
+./manage.py dbshell
+
+====
+
+./manage.py makemigrations
+./manage.py migrate
+./manage.py faker
+
+====
+
+./manage.py runserver
+
+===
+
+1. in ipython from asker.models import Profile, Question
+2. at views.py 'Manager' object has no attribute 'new'
+
+
+=======
+MYSQL
+=======
+sudo service mysql status
+sudo service mysql stop
+sudo service mysql start
+
+systemctl status mysql.service
+
+sudo mysql
+
+mysql -u root -p
+
+
+============
+useful links:
+http://books.agiliq.com/projects/djenofdjango/en/latest/chapter6.html
+https://www.npmjs.com/package/mongoose-voting
+
+//TODO:
+1. pagination.html - pagination should work only with parameter "page"
+2. views.py - study request.GET.get('tab') # TODO: study .get() and eliminate 1 level if if else
+3. generate more Answers so that Pagination appears and works
+4. faker.py - _profile = Profile.objects.filter(user__username__exact=user.username) # TODO: study other objects.methods so that eliminate loop for each item and use bulk operation
+
+====
+
+// superuser
+
+./manage.py createsuperuser
+nozimy
+nozimy@mail.ru
+yunusov97

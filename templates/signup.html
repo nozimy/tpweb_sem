@@ -1,0 +1,98 @@
+{%  extends "base.html" %}
+{% load static %}
+{% block title %} Sign up - {% endblock %}
+
+{%  block content %}
+    <h4>Sign up</h4>
+    <form method="post" id="signUp" novalidate>
+        <div class="form-group row">
+            <label for="l" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-6">
+                <div class="form-text errorSignup" style="color: #dc3545;"></div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="login" class="col-sm-2 col-form-label">Username</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control  " id="username" placeholder="username" required>
+{#                {% if error.username_error %}#}
+{#                    <div class="invalid-feedback">#}
+{#                      Invalid login. Please, use latin letters and "-"#}
+{#                      {{ error.username_error }}#}
+{#                    </div>#}
+{#                {% endif %}#}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control  " id="email" placeholder="example@mail.com" required>
+{#                {% if error.email_error %}#}
+{#                    <div class="invalid-feedback">#}
+{#                      Invalid email#}
+{#                    {{ error.email_error }}#}
+{#                    </div>#}
+{#                {% endif %}#}
+            </div>
+        </div>
+
+{#        <div class="form-group row">#}
+{#            <label for="nickname" class="col-sm-2 col-form-label">NickName</label>#}
+{#            <div class="col-sm-6">#}
+{#                <input type="text" class="form-control  " id="nickname" required>#}
+{#                <div class="invalid-feedback">#}
+{#                  NickName is required#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+
+        <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-6">
+            <input type="password" class="form-control  " id="password1" placeholder="Password" required>
+{#            {% if error.password1_error %}#}
+{#                <div class="invalid-feedback">#}
+{#                      Sorry, weak password#}
+{#                {{ error.password1_error }}#}
+{#                </div>#}
+{#            {% endif %}#}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="repeatPassword" class="col-sm-2 col-form-label">Repeat Password</label>
+            <div class="col-sm-6">
+            <input type="password" class="form-control  " id="password2" placeholder="Password" required>
+{#            {% if error.password2_error %}#}
+{#                <div class="invalid-feedback">#}
+    {#                      Sorry, passwords don't match#}
+{#                {{ error.password2_error }}#}
+{#                </div>#}
+{#            {% endif %}#}
+            </div>
+        </div>
+
+{#        <div class="form-group row">#}
+{#            <label for="customFile" class="col-sm-2 col-form-label">Upload avatar</label>#}
+{#            <div class="col-sm-6">#}
+{#            <div class="custom-file">#}
+{#              <input type="file" class="custom-file-input" id="customFile">#}
+{#              <label class="custom-file-label" for="customFile">Choose file</label>#}
+{#            </div>#}
+{#            </div>#}
+{#        </div>#}
+
+        <div class="form-group row justify-content-end">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary mb-2">Sign up</button>
+            </div>
+        </div>
+    </form>
+    <div class="card margin-top--10">
+        <div class=card-body>
+            <div class="text-center">Already have an account?<a href="/login"> Log In</a></div>
+        </div>
+    </div>
+{% endblock %}

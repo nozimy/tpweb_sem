@@ -1,0 +1,3 @@
+{% for tag in question.tags.all %}
+    <a href="/questions/tagged/{{ tag.text }}" class="badge badge-light">{{ tag.text }}</a>
+{% endfor %}

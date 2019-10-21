@@ -1,0 +1,6 @@
+[client]
+host = localhost
+database = ask
+user = root
+password = root
+default-character-set = utf8

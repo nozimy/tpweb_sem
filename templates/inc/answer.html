@@ -1,0 +1,24 @@
+{% load static %}
+<div class="media tp-question-block">
+  <div>
+{#      <img src="{% static 'img/pinterest_profile_image.png' %}" width="64" height="64" class="mr-3 mb-2" alt="...">#}
+      <img src="{% include 'inc/avatar_img.html' with avatar=answer.author.avatar %}" width="64" height="64" class="mr-3 mb-2" alt="...">
+  <div class="tp-voting d-flex flex-column justify-content-center">
+    <button><i class="fas fa-chevron-up"></i></button>
+      <div>{{ answer.rating }}</div>
+    <button><i class="fas fa-chevron-down"></i></button>
+  </div>
+  </div>
+
+  <div class="media-body">
+      <div class="q-description">
+        {{ answer.text }}
+      </div>
+
+      <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="customCheckDisabled1" {% if answer.is_correct %} checked {% endif %}>
+      <label class="custom-control-label" for="customCheckDisabled1">Correct</label>
+    </div>
+
+  </div>
+</div>

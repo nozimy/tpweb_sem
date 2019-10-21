@@ -1,0 +1,46 @@
+{%  extends "base.html" %}
+{% load static %}
+{% block title %} Ask {% endblock %}
+
+{%  block content %}
+    <div class="col-sm-12 col-md-12 mb-3">
+      <h4>New Question</h4>
+    </div>
+    <div class="col-sm-12 col-md-10">
+<form method="post" id="askForm">
+            <div class="mb-3">
+                <div class="form-text errorSignup" style="color: #dc3545;"></div>
+            </div>
+
+          <div class="mb-3">
+            <label for="validationTextarea">Title</label>
+            <input type="text" class="form-control is-invalid" id="title" placeholder="Enter question title" required></input>
+{#            <div class="invalid-feedback">#}
+{#              Please enter your question title in the text field.#}
+{#            </div>#}
+          </div>
+
+           <div class="mb-3">
+            <label for="validationTextarea">Text</label>
+            <textarea class="form-control is-invalid" rows="10" id="description" placeholder="Enter question text" required></textarea>
+{#            <div class="invalid-feedback">#}
+{#              Please enter your question in the textarea.#}
+{#            </div>#}
+          </div>
+
+           <div class="mb-3">
+            <label for="validationTextarea">Tags</label>
+            <input type="text" class="form-control is-invalid" id="tags" placeholder="Write tag and click Enter" required></input>
+{#            <div class="invalid-feedback">#}
+{#              Please enter min one tag#}
+{#            </div>#}
+          </div>
+
+           <button type="submit" class="btn btn-primary mb-2">Ask</button>
+
+        </form>
+    </div>
+
+{% endblock %}
+
+{#<!doctype html>#}

@@ -1,0 +1,56 @@
+{%  load static %}
+<nav class="tp-top-bar navbar navbar-expand-md navbar-light bg-light fixed-top">
+            <a class="navbar-brand" href="{%  url 'index' %}">
+                <img src="{% static './img/logo_transparent.png' %}" width="40" height="40" class="d-inline-block align-top" alt="">
+                GET200</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <form class="form-inline mr-auto input-group search-input-group">
+                    <!--<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
+                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <!--<button class="btn btn-outline-secondary" type="button">Button</button>-->
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                      </div>
+
+                </form>
+
+                <ul class="navbar-nav  mt-2 mt-md-0">
+                    <li class="nav-item">
+                        <a class="btn btn-success mr-md-3" href="{%  url 'ask' %}">Ask!</a>
+                    </li>
+                    {%  if  user.is_authenticated %}
+                        <!-- Logged in -->
+                        <li class="nav-item">
+                            <img src={% include 'inc/avatar_img.html' with avatar=user.profile.avatar %}" width="48" height="48" alt="avatar" class="img-thumbnail float-left mx-auto d-block">
+
+                        </li>
+                        <div class="user-block">
+                            <div class="nav-link">{{ user.username }}</div>
+                            <div>
+                                <ul class="navbar-nav  mt-2 mt-md-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'profile' %}">profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    {% else %}
+                        <!-- Logged Out -->
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'login' %}">Sign in <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="btn btn-outline-success" href="{% url 'signup' %}">Sign up</a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+
+            </div>
+        </nav>
